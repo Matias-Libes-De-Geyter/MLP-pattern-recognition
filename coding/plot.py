@@ -11,7 +11,7 @@ plt.plot(filtered_data['Epoch'], filtered_data['Accuracy'], marker='o', color='b
 plt.title('Model Accuracy')
 plt.xlabel('Epoch')
 plt.ylabel('Accuracy')
-plt.xticks(data['Epoch'][::100])
+plt.xticks(data['Epoch'][::100] - 1)
 plt.grid()
 plt.legend()
 
@@ -20,7 +20,7 @@ plt.plot(filtered_data['Epoch'], filtered_data['Loss'], marker='o', color='r', l
 plt.title('Model Loss')
 plt.xlabel('Epoch')
 plt.ylabel('Training Loss')
-plt.xticks(data['Epoch'][::100])
+plt.xticks(data['Epoch'][::100] - 1)
 plt.grid()
 plt.legend()
 

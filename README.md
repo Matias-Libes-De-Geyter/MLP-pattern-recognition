@@ -1,6 +1,6 @@
 # MLP-pattern-recognition
 The aim of this project was, using a very simple Fast-Forward Neural Network and Adam optimizer, to have a good accuracy on MNIST database.
-I used exclusively the slides of UToyko's Advanced Data Analysis class by *Takashi Ishida* (ishi@k.u-tokyo.ac.jp), and chatGPT to create writing and reading functions.
+I used exclusively the slides of UToyko's Advanced Data Analysis class by *Takashi Ishida* (ishi@k.u-tokyo.ac.jp) for my code and understanding, with a hand from chatGPT for giving readMNIST, reverseInt (Big-endian to Little-endian conversion) and writeFile functions.
 
 ### Why C++ ?
 - Firstly, I used C++ because I'm much more familiar with it than Python. I was also interested to challenge myself to see if I could build a neural network from scratch, without pytorch or similar libraries.
