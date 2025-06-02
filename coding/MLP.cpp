@@ -38,7 +38,6 @@ void MLP::backpropagation(const dmatrix& input, const dmatrix& y_hot_one) {
         m_deltas[l] = hadamard(m_deltas[l + 1] * remove_bias(transpose(m_layers[l + 1].weights())), ReLU_derivate(m_layers[l].preactivation()));
         m_grad_J[l] = transpose(addBiases(l == 0 ? input : m_layers[l - 1].output())) * m_deltas[l];
                                 //important addBiases
-
     }
 
 }
@@ -67,7 +66,7 @@ void MLP::Adam() {
 
 }
 
-void MLP::backwards(const dmatrix& input, const dmatrix& y_hot_one) {
+double MLP::backwards(const dmatrix& input, const dmatrix& y_hot_one) {
     if(t == 0)
         print(CELoss(m_layers.back().output(), y_hot_one).second);
     
@@ -75,5 +74,7 @@ void MLP::backwards(const dmatrix& input, const dmatrix& y_hot_one) {
     Adam();
     
     //if(t % 50 == 0)
-        print(CELoss(m_layers.back().output(), y_hot_one).second);
+    double loss = CELoss(m_layers.back().output(), y_hot_one).second;
+    print(loss);
+    return loss;
 }

@@ -259,23 +259,6 @@ dmatrix getCertitude(const dmatrix& A) {
 	return C;
 }
 
-std::tuple<dmatrix, dmatrix> spiral_data(const size_t& points, const size_t& classes, const float& spread) {
-	dmatrix X(points * classes, dvector(2, 0));
-	dmatrix y_hot_one(points * classes, dvector(classes, 0));
-	double r, t;
-	for (size_t i = 0; i < classes; i++) {
-		for (size_t j = 0; j < points; j++) {
-			r = double(j) / double(points);
-			t = i * 4 + (4 * r);
-			X[i * points + j] = dvector{ r * cos(t * 2.5), r * sin(t * 2.5) } + dvector{ random(-spread, spread), random(-spread, spread) };
-			dvector rez;
-			for (int k = 0; k < classes; k++)
-				rez.push_back((i == k ? 1 : 0));
-			y_hot_one[i * points + j] = rez;
-		}
-	}
-	return std::make_tuple(X, y_hot_one);
-}
 
 dmatrix hotOne(const dvector& y, const int& nElements) {
 
@@ -337,4 +320,18 @@ void readMNIST(const std::string& imageFile, const std::string& labelFile,
 		lblFile.read(reinterpret_cast<char*>(&label), sizeof(label));
 		labels[i] = static_cast<double>(label);
 	}
+}
+void writeFile(const dvector& accuracies, const dvector& losses, int nb_epochs, const std::string& filename) {
+	std::ofstream outFile(filename);
+	if (!outFile) {
+		std::cerr << "Error opening file for writing: " << filename << std::endl;
+		return;
+	}
+
+	outFile << "Epoch,Accuracy,Loss\n";
+	for (int epoch = 0; epoch < nb_epochs; ++epoch) {
+		outFile << epoch + 1 << "," << accuracies[epoch] << "," << losses[epoch] << "\n";
+	}
+
+	outFile.close();
 }

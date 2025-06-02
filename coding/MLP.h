@@ -1,4 +1,4 @@
-#include "Blocks.h"
+#include "DenseBlock.h"
 
 class MLP {
 private:
@@ -13,5 +13,5 @@ public:
 	dmatrix forward(const dmatrix& input);
 	void backpropagation(const dmatrix& input, const dmatrix& y_hot_one);
 	void Adam();
-	void backwards(const dmatrix& input, const dmatrix& y_hot_one);
+	double backwards(const dmatrix& input, const dmatrix& y_hot_one);
 };
