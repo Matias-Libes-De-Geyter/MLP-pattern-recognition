@@ -15,7 +15,12 @@ double random(const double& min, const double& max);
 dmatrix operator*(const dmatrix& A, const dmatrix& B);
 dmatrix operator+(const dmatrix& A, const dvector& B);
 dvector operator+(const dvector& A, const dvector& B);
+dmatrix operator-(const dmatrix& A, const dmatrix& B);
+dmatrix transpose(const dmatrix& A);
+dmatrix hadamard(const dmatrix& A, const dmatrix& B);
+dmatrix ReLU_derivate(const dmatrix& A);
+
 void printArray(const dmatrix& arr, const std::string& texte);
 void printArray(const dvector& arr);
 
-std::tuple<dmatrix, dvector> spiral_data(const size_t& points, const size_t& classes, const float& spread);
+std::tuple<std::tuple<dmatrix, dmatrix>, dvector> spiral_data(const size_t& points, const size_t& classes, const float& spread);

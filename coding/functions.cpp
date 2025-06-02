@@ -46,6 +46,57 @@ dvector operator+(const dvector& A, const dvector& B) {
 
 	return C;
 }
+dmatrix operator-(const dmatrix& A, const dmatrix& B) {
+	size_t n_rows = A.size();
+	size_t n_columns = A[0].size();
+
+	dmatrix C(n_rows, dvector(n_columns, 0));
+	for (size_t i = 0; i < n_rows; i++) {
+		for (size_t j = 0; j < n_columns; j++) {
+			C[i][j] += A[i][j] - B[i][j];
+		}
+	}
+
+	return C;
+}
+dmatrix transpose(const dmatrix& A) {
+	size_t n_rows = A.size();
+	size_t n_columns = A[0].size();
+
+	dmatrix C(n_rows, dvector(n_columns, 0));
+	for (size_t i = 0; i < n_rows; i++) {
+		for (size_t j = 0; j < n_columns; j++) {
+			C[i][j] = A[j][i];
+		}
+	}
+
+	return C;
+}
+dmatrix hadamard(const dmatrix& A, const dmatrix& B) {
+	size_t n_rows = A.size();
+	size_t n_columns = A[0].size();
+
+	dmatrix C(n_rows, dvector(n_columns, 0));
+	for (size_t i = 0; i < n_rows; i++) {
+		for (size_t j = 0; j < n_columns; j++) {
+			C[i][j] += A[i][j]*B[i][j];
+		}
+	}
+
+	return C;
+}
+dmatrix ReLU_derivate(const dmatrix& A) {
+	size_t n_rows = A.size();
+	size_t n_columns = A[0].size();
+
+	dmatrix C(n_rows, dvector(n_columns, 0));
+	for (size_t i = 0; i < n_rows; i++) {
+		for (size_t j = 0; j < n_columns; j++) {
+			C[i][j] = (A[i][j] > 0.0 ? 1.0 : 0);
+		}
+	}
+	return C;
+}
 
 
 void printArray(const dmatrix& arr, const std::string& texte) {
@@ -68,17 +119,22 @@ void printArray(const dvector& arr) {
 }
 
 
-std::tuple<dmatrix, dvector> spiral_data(const size_t& points, const size_t& classes, const float& spread) {
+std::tuple<std::tuple<dmatrix, dmatrix>, dvector> spiral_data(const size_t& points, const size_t& classes, const float& spread) {
 	dmatrix X(points * classes, dvector(2, 0));
 	dvector y(points * classes, 0);
+	dmatrix y_hot_one(points * classes, dvector(classes, 0));
 	double r, t;
 	for (size_t i = 0; i < classes; i++) {
 		for (size_t j = 0; j < points; j++) {
 			r = double(j) / double(points);
 			t = i * 4 + (4 * r);
 			X[i * points + j] = dvector{ r * cos(t * 2.5), r * sin(t * 2.5) } + dvector{ random(-spread, spread), random(-spread, spread) };
+			dvector rez;
+			for (int k = 0; k < classes; k++)
+				rez.push_back((i == k ? 1 : 0));
+			y_hot_one[i * points + j] = rez;
 			y[i * points + j] = i;
 		}
 	}
-	return std::make_tuple(X, y);
+	return std::make_tuple(std::make_tuple(X, y_hot_one), y);
 }

@@ -1,32 +1,23 @@
 #include "functions.h"
 
-namespace DL {
-	class Dense_layer {
-	private:
-		dmatrix m_weights;
-		dvector m_biases;
-		dmatrix m_output;
-
-	public:
-		Dense_layer(const int& n_inputs, const int& n_neurons);
-		void forward(const dmatrix& inputs);
-		dmatrix output();
-	};
-}
-
-class Activation {
+class DenseBlock {
 private:
+	dmatrix m_weights;
+	dvector m_biases;
+	dmatrix m_preactivation;
 	dmatrix m_output;
+
+	dvector delta;
+	
+	void activate(const dmatrix& inputs);
+	void softmax_activation(const dmatrix& inputs);
+
 public:
-	Activation(const dmatrix& inputs);
+	DenseBlock(const int& n_inputs, const int& n_neurons);
+	void forward(const dmatrix& inputs, const std::string& softmax = "");
 	dmatrix output();
-};
-class Activation_Softmax {
-private:
-	dmatrix m_output;
-public:
-	Activation_Softmax(const dmatrix& inputs);
-	dmatrix output();
+	dmatrix weights();
+	dmatrix preactivation();
 };
 
 

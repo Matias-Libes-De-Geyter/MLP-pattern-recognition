@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:coding\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:coding\\functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\Blocks.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:coding\\Blocks.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\Blocks.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:coding\\Blocks.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:coding\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,17 +26,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\main.cpp",
               "RelativeDocumentMoniker": "coding\\main.cpp",
               "ToolTip": "C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\main.cpp",
               "RelativeToolTip": "coding\\main.cpp",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAABAAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-30T07:17:04.866Z",
               "IsPinned": true,
@@ -40,26 +44,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Blocks.cpp",
               "DocumentMoniker": "C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\Blocks.cpp",
               "RelativeDocumentMoniker": "coding\\Blocks.cpp",
               "ToolTip": "C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\Blocks.cpp",
               "RelativeToolTip": "coding\\Blocks.cpp",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAEcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAD8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-30T10:58:29.734Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "functions.h",
+              "DocumentMoniker": "C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\functions.h",
+              "RelativeDocumentMoniker": "coding\\functions.h",
+              "ToolTip": "C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\functions.h",
+              "RelativeToolTip": "coding\\functions.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-31T05:20:25.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Blocks.h",
               "DocumentMoniker": "C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\Blocks.h",
               "RelativeDocumentMoniker": "coding\\Blocks.h",
               "ToolTip": "C:\\Users\\sa\u00EFtama\\Documents\\Documents\\Programming\\--=NeuralNetwork=--\\coding\\Blocks.h",
               "RelativeToolTip": "coding\\Blocks.h",
-              "ViewState": "AgIAABQAAAAAAAAAAAAwwCMAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-05-30T10:58:44.664Z",
               "EditorCaption": ""

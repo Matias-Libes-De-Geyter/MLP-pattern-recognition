@@ -2,37 +2,23 @@
 
 
 // ======== DENSE LAYER ======== //
-DL::Dense_layer::Dense_layer(const int& n_inputs, const int& n_neurons) : m_weights(n_inputs, dvector(n_neurons)), m_biases(n_neurons, 0) {
+DenseBlock::DenseBlock(const int& n_inputs, const int& n_neurons) : m_weights(n_inputs, dvector(n_neurons)), m_biases(n_neurons, 0) {
 	for (size_t i = 0; i < n_neurons; i++) {
 		for (size_t j = 0; j < n_inputs; j++) {
 			m_weights[j][i] = random(-1, 1);
 		}
-		m_biases[i] = 0;//random(0, 1);
+		m_biases[i] = random(-1, 1);
 	}
 };
-void DL::Dense_layer::forward(const dmatrix& inputs) {
-	m_output = inputs * m_weights + m_biases;
-};
-dmatrix DL::Dense_layer::output() {
-	return m_output;
-}
 
-
-// ======== ACTIVATION RELU ======== //
-Activation::Activation(const dmatrix& inputs) : m_output(inputs.size(), dvector(inputs[0].size())) {
+void DenseBlock::activate(const dmatrix& inputs) {
 	for (int i = 0; i < inputs.size(); i++) {
 		for (int j = 0; j < inputs[0].size(); j++) {
 			m_output[i][j] = std::max(0.0, inputs[i][j]);
 		}
 	}
 }
-dmatrix Activation::output() {
-	return m_output;
-}
-
-// ======== ACTIVATION SOFTMAX ======== //
-Activation_Softmax::Activation_Softmax(const dmatrix& inputs) : m_output(inputs.size(), dvector(inputs[0].size(), 0)) {
-
+void DenseBlock::softmax_activation(const dmatrix& inputs) {
 	dvector maxs(inputs.size());
 	for (int i = 0; i < inputs.size(); i++) {
 		maxs[i] = inputs[i][0];
@@ -57,12 +43,23 @@ Activation_Softmax::Activation_Softmax(const dmatrix& inputs) : m_output(inputs.
 			m_output[i][j] = expvalues[i][j] / sum_of_exps[i]; // m_output = probabilities
 		}
 	}
-
 }
-dmatrix Activation_Softmax::output() {
+void DenseBlock::forward(const dmatrix& inputs, const std::string& softmax) {
+	m_preactivation = inputs * m_weights + m_biases;
+	m_output = m_preactivation;
+
+	(softmax == "softmax" ? softmax_activation(m_output) : activate(m_output));
+};
+
+dmatrix DenseBlock::output() {
 	return m_output;
 }
-
+dmatrix DenseBlock::weights() {
+	return m_weights;
+}
+dmatrix DenseBlock::preactivation() {
+	return m_preactivation;
+}
 
 
 
