@@ -24,8 +24,8 @@ Along the way, I had to create numerous operator transformation and other functi
 ### Results
 When ran into the whole training **MNIST** database, the model gives the following results:
 ![output](output.png)
-(with values plotted each 5 epochs, or else we couldn't see anything)
-Here we can see the training loss and accuracy for each epochs. The latter rises quite quickly, before settling around a mean. Which means that the model doesn't have to be ran this long to get a good accuracy. We could maybe improve it by using regularization methods.
+(with values plotted each 5 epochs, otherwise my computer would take too much time to compute, and we couldn't see anything)
+Here we can see the training loss, test loss and accuracy for each epochs. The latter rises quite quickly, before settling around a mean. Which means that the model doesn't have to be ran this long to get a good accuracy. We could maybe improve it by using regularization methods.
 
 ### Opening
 - I didn't implement regularization methods. No dropout, no flooding, and no early stopping.

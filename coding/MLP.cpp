@@ -66,15 +66,18 @@ void MLP::Adam() {
 
 }
 
-double MLP::backwards(const dmatrix& input, const dmatrix& y_hot_one) {
+double MLP::CELoss(const dmatrix& y_hot_one) {
+    double loss = CELossFunction(m_layers.back().output(), y_hot_one).second;
+    return loss;
+}
+
+void MLP::backwards(const dmatrix& input, const dmatrix& y_hot_one) {
     if(t == 0)
-        print(CELoss(m_layers.back().output(), y_hot_one).second);
+        print(CELoss(y_hot_one));
     
     backpropagation(input, y_hot_one);
     Adam();
     
     //if(t % 50 == 0)
-    double loss = CELoss(m_layers.back().output(), y_hot_one).second;
-    print(loss);
-    return loss;
+    print(CELoss(y_hot_one));
 }

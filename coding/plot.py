@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 data = pd.read_csv('training_data.csv')
-filtered_data = data[data['Epoch'] % 5 == 0]
+filtered_data = data[data['Epoch'] % 10 == 1] # We plot data each 10 epochs. Otherwise, the plot is badly readable.
 
 plt.figure(figsize=(12, 6))
 
@@ -16,10 +16,11 @@ plt.grid()
 plt.legend()
 
 plt.subplot(1, 2, 2)
-plt.plot(filtered_data['Epoch'], filtered_data['Loss'], marker='o', color='r', label='Loss')
+plt.plot(filtered_data['Epoch'], filtered_data['TrainLoss'], marker='o', color='r', label='Training Loss')
+plt.plot(filtered_data['Epoch'], filtered_data['TestLoss'], marker='o', color='g', label='Test Loss')
 plt.title('Model Loss')
 plt.xlabel('Epoch')
-plt.ylabel('Training Loss')
+plt.ylabel('Loss')
 plt.xticks(data['Epoch'][::100] - 1)
 plt.grid()
 plt.legend()

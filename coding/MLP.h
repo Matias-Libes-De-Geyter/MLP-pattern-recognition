@@ -13,5 +13,6 @@ public:
 	dmatrix forward(const dmatrix& input);
 	void backpropagation(const dmatrix& input, const dmatrix& y_hot_one);
 	void Adam();
-	double backwards(const dmatrix& input, const dmatrix& y_hot_one);
+	void backwards(const dmatrix& input, const dmatrix& y_hot_one);
+	double CELoss(const dmatrix& y_hot_one);
 };

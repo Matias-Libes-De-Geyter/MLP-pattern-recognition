@@ -41,8 +41,8 @@ dmatrix ReLU_derivate(const dmatrix& A);
 dmatrix getCertitudeHot(const dmatrix& A);
 dmatrix getCertitude(const dmatrix& A);
 dmatrix hotOne(const dvector& y, const int& nElements);
-std::pair<dvector, double> CELoss(const dmatrix& y_pred, const dmatrix& y_true);
+std::pair<dvector, double> CELossFunction(const dmatrix& y_pred, const dmatrix& y_true);
 
 // Read and Write files
 void readMNIST(const std::string& imageFile, const std::string& labelFile, dmatrix& images, dvector& labels);
-void writeFile(const dvector& accuracies, const dvector& losses, int nb_epochs, const std::string& filename);
+void writeFile(const dvector& accuracies, const dvector& trainLosses, const dvector& testLosses, int nb_epochs, const std::string& filename);

@@ -210,7 +210,7 @@ dmatrix ReLU_derivate(const dmatrix& A) {
 	return C;
 }
 
-std::pair<dvector, double> CELoss(const dmatrix& y_pred, const dmatrix& y_true) {
+std::pair<dvector, double> CELossFunction(const dmatrix& y_pred, const dmatrix& y_true) {
 	dvector loss(y_pred.size(), 1e-9);
 	double mean_loss = 0.0;
 
@@ -321,16 +321,16 @@ void readMNIST(const std::string& imageFile, const std::string& labelFile,
 		labels[i] = static_cast<double>(label);
 	}
 }
-void writeFile(const dvector& accuracies, const dvector& losses, int nb_epochs, const std::string& filename) {
+void writeFile(const dvector& accuracies, const dvector& trainLosses, const dvector& testLosses, int nb_epochs, const std::string& filename) {
 	std::ofstream outFile(filename);
 	if (!outFile) {
 		std::cerr << "Error opening file for writing: " << filename << std::endl;
 		return;
 	}
 
-	outFile << "Epoch,Accuracy,Loss\n";
+	outFile << "Epoch,Accuracy,TrainLoss,TestLoss\n";
 	for (int epoch = 0; epoch < nb_epochs; ++epoch) {
-		outFile << epoch + 1 << "," << accuracies[epoch] << "," << losses[epoch] << "\n";
+		outFile << epoch + 1 << "," << accuracies[epoch] << "," << trainLosses[epoch] << "," << testLosses[epoch] << "\n";
 	}
 
 	outFile.close();
