@@ -1,4 +1,4 @@
-#include "functions.h"
+ï»¿#include "functions.h"
 
 double random(const double& min, const double& max) {
 	std::mt19937_64 rng{};
@@ -37,6 +37,9 @@ void print(const dvector& arr) {
 }
 void print(const double& val) {
 	std::cout << val << std::endl;
+}
+void print(const std::string& texte) {
+	std::cout << texte << std::endl;
 }
 void print(const double& val, const std::string& texte) {
 	std::cout << val << " " << texte << std::endl;
@@ -161,7 +164,7 @@ dmatrix aug_inputs_mult(const dmatrix& A, const dmatrix& B) {
 			for (size_t k = 0; k < n_inner - 1; k++) {
 				C[i][j] += A[i][k] * B[k][j];
 			}
-			C[i][j] += 1 * B[n_inner - 1][j]; // Comme si on avait rajouté une colonne à "input" de que des 1.
+			C[i][j] += 1 * B[n_inner - 1][j]; // Comme si on avait rajoutÃ© une colonne Ã  "input" de que des 1.
 		}
 	}
 
@@ -208,13 +211,13 @@ dmatrix ReLU_derivate(const dmatrix& A) {
 }
 
 std::pair<dvector, double> CELoss(const dmatrix& y_pred, const dmatrix& y_true) {
-	dvector loss(y_pred.size(), 0.0);
+	dvector loss(y_pred.size(), 1e-9);
 	double mean_loss = 0.0;
 
 	for (int i = 0; i < y_pred.size(); i++)
 		for (int j = 0; j < y_pred[0].size(); j++)
 			if (y_true[i][j] == 1.0) {
-				double prob = std::max(y_pred[i][j], 1e-15);
+				double prob = std::max(y_pred[i][j], 1e-9);
 				loss[i] = -log(prob);
 				mean_loss += loss[i];
 				break;
@@ -223,6 +226,22 @@ std::pair<dvector, double> CELoss(const dmatrix& y_pred, const dmatrix& y_true) 
 	mean_loss /= y_pred.size();  // moyenne sur tous les exemples
 
 	return { loss, mean_loss };
+}
+
+dmatrix getCertitudeHot(const dmatrix& A) {
+	size_t n_rows = A.size();
+	size_t n_columns = A[0].size();
+
+	dmatrix C(n_rows, dvector(n_columns, 0));
+	for (size_t i = 0; i < n_rows; i++) {
+
+		auto maxElement = std::max_element(A[i].begin(), A[i].end());
+		size_t maxIndex = std::distance(A[i].begin(), maxElement);
+
+		C[i][maxIndex] = 1;
+	}
+
+	return C;
 }
 dmatrix getCertitude(const dmatrix& A) {
 	size_t n_rows = A.size();
@@ -233,7 +252,7 @@ dmatrix getCertitude(const dmatrix& A) {
 
 		auto maxElement = std::max_element(A[i].begin(), A[i].end());
 		size_t maxIndex = std::distance(A[i].begin(), maxElement);
-		
+
 		C[i][maxIndex] = 1;
 	}
 
@@ -257,7 +276,8 @@ std::tuple<dmatrix, dmatrix> spiral_data(const size_t& points, const size_t& cla
 	}
 	return std::make_tuple(X, y_hot_one);
 }
-/*dmatrix hotOne(const dvector& y, const int& nElements) {
+
+dmatrix hotOne(const dvector& y, const int& nElements) {
 
 	dmatrix C(y.size(), dvector(nElements, 0));
 
@@ -266,4 +286,55 @@ std::tuple<dmatrix, dmatrix> spiral_data(const size_t& points, const size_t& cla
 	}
 	return C;
 
-}*/
+}
+
+
+int reverseInt(int i) {
+	unsigned char c1, c2, c3, c4;
+	c1 = i & 255;
+	c2 = (i >> 8) & 255;
+	c3 = (i >> 16) & 255;
+	c4 = (i >> 24) & 255;
+	return ((int)c1 << 24) + ((int)c2 << 16) + ((int)c3 << 8) + c4;
+}
+
+void readMNIST(const std::string& imageFile, const std::string& labelFile,
+	dmatrix& images, dvector& labels) {
+	std::ifstream imgFile(imageFile, std::ios::binary);
+	std::ifstream lblFile(labelFile, std::ios::binary);
+
+	int magicNumber, numImages, numRows, numCols;
+	imgFile.read(reinterpret_cast<char*>(&magicNumber), sizeof(magicNumber));
+	magicNumber = reverseInt(magicNumber);
+	imgFile.read(reinterpret_cast<char*>(&numImages), sizeof(numImages));
+	numImages = reverseInt(numImages);
+	imgFile.read(reinterpret_cast<char*>(&numRows), sizeof(numRows));
+	numRows = reverseInt(numRows);
+	imgFile.read(reinterpret_cast<char*>(&numCols), sizeof(numCols));
+	numCols = reverseInt(numCols);
+
+	int labelMagicNumber, numLabels;
+	lblFile.read(reinterpret_cast<char*>(&labelMagicNumber), sizeof(labelMagicNumber));
+	labelMagicNumber = reverseInt(labelMagicNumber);
+	lblFile.read(reinterpret_cast<char*>(&numLabels), sizeof(numLabels));
+	numLabels = reverseInt(numLabels);
+
+	// Get sure that sizes matches
+	int n = std::min(numImages, numLabels);
+	images.resize(n, std::vector<double>(numRows * numCols));
+	labels.resize(n);
+
+	for (int i = 0; i < n; ++i) {
+		// Images
+		for (int j = 0; j < numRows * numCols; ++j) {
+			unsigned char pixel;
+			imgFile.read(reinterpret_cast<char*>(&pixel), sizeof(pixel));
+			images[i][j] = static_cast<double>(pixel) / 255.0;
+		}
+		
+		// Labels
+		unsigned char label;
+		lblFile.read(reinterpret_cast<char*>(&label), sizeof(label));
+		labels[i] = static_cast<double>(label);
+	}
+}

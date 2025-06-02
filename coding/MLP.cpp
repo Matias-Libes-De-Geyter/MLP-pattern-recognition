@@ -39,18 +39,12 @@ void MLP::backpropagation(const dmatrix& input, const dmatrix& y_hot_one) {
         m_grad_J[l] = transpose(addBiases(l == 0 ? input : m_layers[l - 1].output())) * m_deltas[l];
                                 //important addBiases
 
-        /*printSize(m_deltas[l], l, "Delta");
-        printSize(m_grad_J[l], l, "Grad");
-        printSize(m_layers[l].weights(), l, "Weights");
-        std::cout << std::endl;
-        std::cout << m_grad_J[l].size() - m_layers[l].weights().size() << std::endl;
-        std::cout << m_grad_J[l][0].size() - m_layers[l].weights()[0].size() << std::endl;*/
     }
 
 }
 
 void MLP::Adam() {
-    double lr = 0.1;
+    double lr = 1e-3;
 
     double beta_m = 0.9;
     double beta_v = 0.999;
@@ -80,6 +74,6 @@ void MLP::backwards(const dmatrix& input, const dmatrix& y_hot_one) {
     backpropagation(input, y_hot_one);
     Adam();
     
-    if(t % 100 == 0)
+    //if(t % 50 == 0)
         print(CELoss(m_layers.back().output(), y_hot_one).second);
 }
