@@ -1,5 +1,5 @@
 # MLP-pattern-recognition
-The aim of this project was, using a very simple Fast-Forward Neural Network and Adam optimizer, to have a good accuracy on MNIST database.
+The aim of this project was, using a very simple Feed-Forward Neural Network and Adam optimizer, to have a good accuracy on MNIST database.
 I used exclusively the slides of UToyko's Advanced Data Analysis class by *Takashi Ishida* (ishi@k.u-tokyo.ac.jp) for my code and understanding, with a hand from chatGPT for giving readMNIST, reverseInt (Big-endian to Little-endian conversion) and writeFile functions.
 
 ### Why C++ ?
