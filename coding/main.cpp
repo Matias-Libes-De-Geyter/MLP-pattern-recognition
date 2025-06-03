@@ -20,7 +20,7 @@ int main() {
     print("Finished loading.");
 
     // MLP init
-    dvector hidden_layers_sizes{ 728, 256, 128, 10 };
+    dvector hidden_layers_sizes{ 28*28, 256, 128, 10 };
     MLP NN(hidden_layers_sizes);
 
     // Losses init
