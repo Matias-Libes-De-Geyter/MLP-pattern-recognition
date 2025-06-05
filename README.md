@@ -14,9 +14,11 @@ The aim of this project was, using a very simple Feed-Forward Neural Network and
 ## Demo
 
 Training preview:
+
 ![training](training.gif)
 
 Test preview:
+
 ![testing](testing.gif)
 
 ## Methodology
