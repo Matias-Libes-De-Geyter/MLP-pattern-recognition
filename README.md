@@ -16,8 +16,8 @@ The aim of this project was, using a very simple Feed-Forward Neural Network and
 Training & testing previews:
 
 <p align="center">
-  <img src="training.gif" width="208" />
-  <img src="testing.gif" width="691" />
+  <img src="training.gif" width="185" />
+  <img src="testing.gif" width="614" />
 </p>
 
 
