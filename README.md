@@ -13,13 +13,13 @@ The aim of this project was, using a very simple Feed-Forward Neural Network and
 
 ## Demo
 
-Training preview:
+Training & testing previews:
 
-![training](training.gif)
+<p align="center">
+  <img src="training.gif" width="208" />
+  <img src="testing.gif" width="691" />
+</p>
 
-Test preview:
-
-![testing](testing.gif)
 
 ## Methodology
 Firstly, I created the Matrix class to handle operations and vectors. From then on:
