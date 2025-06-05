@@ -68,8 +68,8 @@ void train(MLP& NN, const hyperparameters& hyper) {
     // Train
     dmatrix images;
     dvector labels;
-    std::string trainImagesFile = "database/MNIST/train-images.idx3-ubyte";
-    std::string trainLabelsFile = "database/MNIST/train-labels.idx1-ubyte";
+    std::string trainImagesFile = "executable/database/MNIST/train-images.idx3-ubyte";
+    std::string trainLabelsFile = "executable/database/MNIST/train-labels.idx1-ubyte";
     readMNIST(trainImagesFile, trainLabelsFile, images, labels);
 	Matrix labels_hotOnes = hotOne(labels, 10);
     print("Database finished loading.");

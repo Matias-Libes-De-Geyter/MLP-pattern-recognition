@@ -64,7 +64,7 @@ After training on the whole train database, the model provides an **accuracy of 
 
 ## How to Use
 
-- Run the ```main.exe``` file. To train, press 'y'. Any other input would lead to the test interface.
+- Run the ```MLP.bat``` file. To train, press 'y'. Any other input would lead to the test interface.
 - If training:
   - To plot the output of the training, run the ```plot.py``` file from the main folder.
 - If testing:
@@ -86,8 +86,12 @@ To change the hyperparameters except boolean ```training```, you must recompile 
 ```plaintext
 NeuralNetwork/
 │
-├── database/       # Dataset
-│   └── MNIST/
+├── executable/
+│   ├── database/       # Dataset
+│   │   └── MNIST/
+│   ├── main.exe            # Main executable
+│   ├── model_weights.txt   # Save of the weights. Used to run the program without having to train it everytime
+│   └── xxx.dll             # SFML and C++ Dlls used in the main.exe file.
 │
 ├── img/
 │   ├── testing.gif     # Training example
@@ -117,11 +121,9 @@ NeuralNetwork/
 │   ├── main.cpp        # Main code that initiate all variables
 │   └── plot.py         # Run "py Neural_Network/plot.py" to get a plot of the result of the training
 │
-├── main.exe            # Run "start main.exe" to test the NN
 ├── MakeFile
-├── model_weights.txt   # Save of the weights. Used to run the program without having to train it everytime
-├── README.md
-├── sfml-x.dll          # SFML Dlls used in the main.exe file.
+├── MLP.bat             # Execute this file to test the program
+├── README.md           
 └── training_data.csv   # Output from the training process, to plot the loss and accuracy
 ```
 

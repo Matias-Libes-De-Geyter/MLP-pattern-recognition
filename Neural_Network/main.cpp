@@ -38,10 +38,10 @@ int main() {
     // Training
     if (current_hyperparameters.learn) {
         train(NN, current_hyperparameters);
-        NN.saveWeights("model_weights.txt");
+        NN.saveWeights("executable/model_weights.txt");
     }
     else {
-        NN.loadWeights("model_weights.txt");
+        NN.loadWeights("executable/model_weights.txt");
         print("Weights loaded !");
     }
 
