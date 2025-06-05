@@ -5,7 +5,7 @@
 - **Regularization methods:** Early stopping & Dropout.
 
 ## Introduction
-The aim of this project was, using a very simple Feed-Forward Neural Network and Adam optimizer, to firstly get a good accuracy on MNIST database. This was a success, therefore the aim became to implement an interface so the user could draw numbers and as the NN to guess. I used exclusively the slides of UToyko's Advanced Data Analysis class by *Takashi Ishida* (ishi@k.u-tokyo.ac.jp) for my code and understanding, with a hand from chatGPT for giving readMNIST, reverseInt (Big-endian to Little-endian conversion) and read/write files functions.
+The aim of this project was, using a very simple Feed-Forward Neural Network and Adam optimizer, to firstly get a good accuracy on MNIST database. This was a success, therefore the aim became to implement an interface so the user could draw numbers and ask the NN to guess. I used exclusively the slides of UToyko's Advanced Data Analysis class by *Takashi Ishida* (ishi@k.u-tokyo.ac.jp) for my code and understanding, with a hand from chatGPT for giving readMNIST, reverseInt (Big-endian to Little-endian conversion) and read/write files functions.
 
 ### Why C++ ?
 - Firstly, I used C++ because I'm much more familiar with it than Python. I was also interested to challenge myself to see if I could build a neural network from scratch, without pytorch or similar libraries.
@@ -25,11 +25,11 @@ Training & testing previews:
 Firstly, I created the Matrix class to handle operations and vectors. From then on:
 - Creation the DenseBlock class. I chose to put biases inside the weight matrices, and to initialise the weight matrices already transposed.
 - Creation the MLP class, and implementation of the forward pass with softmax activation at the end.
-- Implemented backpropagation using matrix operations and maths.
+- Implementation of backpropagation using matrix operations and math.
 - Addition of Adam optimizer as detailed in the class. I used the same constants, and added a small coefficient ```1e-8``` in the expression of $$w_{ij}^{l+1}$$, such that $$\frac{1}{\sqrt(\hat{v})} \longrightarrow \frac{1}{\sqrt(\hat{v}) + 10^{-8}}$$ in case $$\sqrt(\hat{v})$$ is null.
 - Creation of TrainerClassifier to train the Neural Network.
 
-After implementing these classes and having a good accuracy on MNIST database, I've implemented the SFML library to create a drawing canva.
+After implementing these classes and having a good accuracy on MNIST database, I've implemented the SFML library to create a drawing canvas.
 
 
 ### Hyperparameters
@@ -56,16 +56,19 @@ After training on the whole train database, the model provides an accuracy of $$
 - Also, the tests runs well on MNIST database, but when drawing numbers, the accuracy drops. This could be because the numbers of the database used for training are all centered, and that the way they were generated was different than mine. I tried to implement a gradient around the brush to fit the MNIST database-style and it gave better results, but it wasn't enough.
 
 ### Next steps
-- I didn't implement flooding. Maybe that it could help.
-- My next move will be to implement CNN to solve this problem. When writing by hand it doesn't give satisfying results (clearly above 50% but clearly below 60%).
+- I didn't implement flooding. It could improve the model.
+- The next move would be to implement CNN to solve this problem. When writing by hand it doesn't give satisfying results (clearly above 50% accuracy but clearly below 70%).
 
 
 ---
 
 ## How to Use
 
-- Run the ```main.exe``` file.
-- To plot the output of the training, run the ```plot.py``` file
+- Run the ```main.exe``` file. To train, press 'y'. Any other input would lead to the test interface.
+- If training:
+  - To plot the output of the training, run the ```plot.py``` file.
+- If testing:
+  - Press "A" to get a guess, press "R" to reset the canvas.
 
 To change the hyperparameters except boolean ```training```, you must recompile everything for now. The command to compile is: ```mingw32-make -f MakeFile```.
 
