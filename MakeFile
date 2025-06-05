@@ -1,0 +1,15 @@
+all: compile link
+
+CXXFLAGS = -INeural_Network/TrainerClassifier -INeural_Network/Utilities -INeural_Network/MLP -INeural_Network/DenseBlock -Ilibs/include
+
+SOURCES = $(wildcard Neural_Network/*.cpp) \
+          $(wildcard Neural_Network/TrainerClassifier/*.cpp) \
+          $(wildcard Neural_Network/MLP/*.cpp) \
+          $(wildcard Neural_Network/DenseBlock/*.cpp) \
+          $(wildcard Neural_Network/Utilities/*.cpp)
+
+compile:
+	g++ $(CXXFLAGS) -c $(SOURCES)
+
+link:
+	g++ *.o -o main -Llibs/lib -lsfml-graphics -lsfml-window -lsfml-system
