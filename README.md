@@ -16,8 +16,8 @@ The aim of this project was, using a very simple Feed-Forward Neural Network and
 Training & testing previews:
 
 <p align="center">
-  <img src="training.gif" width="185" />
-  <img src="testing.gif" width="614" />
+  <img src="img/training.gif" width="185" />
+  <img src="img/testing.gif" width="614" />
 </p>
 
 
@@ -43,13 +43,13 @@ After implementing these classes and having a good accuracy on MNIST database, I
 
 ### Observations
 - Results on MNIST train database. When ran into the whole training database, the model gives the following results:
-![Plots](output.png)
+![Plots](img/output.png)
 
 Here, values are plotted each 20-or-so epochs, otherwise my computer would take too much time to compute, and we couldn't see anything. We can see the training loss, and accuracy for each epochs.
 
 - Results on MNIST test database:
 
-After training on the whole train database, the model provides an accuracy of $$96.779$$ when tested on MNIST database's test files.
+After training on the whole train database, the model provides an **accuracy of $$96.779$$%** when tested on MNIST database's test files.
 
 ### Discussion
 - As we can see of the plots, the accuracy rises quite quickly, before settling. This could mean that the model doesn't have to be ran this long to get a good accuracy.
@@ -66,7 +66,7 @@ After training on the whole train database, the model provides an accuracy of $$
 
 - Run the ```main.exe``` file. To train, press 'y'. Any other input would lead to the test interface.
 - If training:
-  - To plot the output of the training, run the ```plot.py``` file.
+  - To plot the output of the training, run the ```plot.py``` file from the main folder.
 - If testing:
   - Press "A" to get a guess, press "R" to reset the canvas.
 
@@ -86,12 +86,13 @@ To change the hyperparameters except boolean ```training```, you must recompile 
 ```plaintext
 NeuralNetwork/
 │
-├── model_save/        # Save of the model just in case
-│   ├── model_weights.txt
-│   └── training_data.csv
-│
 ├── database/       # Dataset
 │   └── MNIST/
+│
+├── img/
+│   ├── testing.gif     # Training example
+│   ├── training.gif    # Testing example
+│   └── output.png
 │
 ├── libs/          # SFML Library used for the window
 │   ├── include/
@@ -119,11 +120,8 @@ NeuralNetwork/
 ├── main.exe            # Run "start main.exe" to test the NN
 ├── MakeFile
 ├── model_weights.txt   # Save of the weights. Used to run the program without having to train it everytime
-├── output.png
 ├── README.md
-├── sfml-x.dll      # SFML Library used for the window
-├── testing.gif     # Training example
-├── training.gif    # Testing example
+├── sfml-x.dll          # SFML Dlls used in the main.exe file.
 └── training_data.csv   # Output from the training process, to plot the loss and accuracy
 ```
 
