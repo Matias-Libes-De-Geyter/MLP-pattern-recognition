@@ -9,7 +9,8 @@ The aim of this project was, using a very simple Feed-Forward Neural Network and
 
 ### Why C++ ?
 - Firstly, I used C++ because I'm much more familiar with it than Python. I was also interested to challenge myself to see if I could build a neural network from scratch, without pytorch or similar libraries.
-- Secondly, I planned to use "SFML", a graphic library (with which I've done many projects), to ask the user to draw a number, and ask the MLP to output its guess.
+- Secondly, I used "SFML", a graphic library (with which I've done many projects), to ask the user to draw a number, and ask the MLP to output its guess.
+- Most importantly, C++ was chosen for it's compatibility with CUDA (which uses GPU), on which the code was translated. This is in the file "CUDA VERSION".
 
 ## Demo
 
@@ -51,6 +52,8 @@ Here, values are plotted each 20-or-so epochs, otherwise my computer would take 
 
 After training on the whole train database, the model provides an **accuracy of $$96.779$$%** when tested on MNIST database's test files.
 
+- In parallel, the code on CUDA ran two to four times faster than the basic C++ code. It is an interesting result that could be useful in the future.
+
 ### Discussion
 - As we can see of the plots, the accuracy rises quite quickly, before settling. This could mean that the model doesn't have to be ran this long to get a good accuracy.
 - Also, the tests runs well on MNIST database, but when drawing numbers, the accuracy drops. This could be because the numbers of the database used for training are all centered, and that the way they were generated was different than mine. I tried to implement a gradient around the brush to fit the MNIST database-style and it gave better results, but it wasn't enough.
@@ -58,6 +61,7 @@ After training on the whole train database, the model provides an **accuracy of 
 ### Next steps
 - I didn't implement flooding. It could improve the model.
 - The next move would be to implement CNN to solve this problem. When writing by hand it doesn't give satisfying results (clearly above 50% accuracy but clearly below 70%).
+- We could also translate matrices into vectors. This would be faster in C++ and also in Cuda since we currently need to flatten and expand matrices to use GPU acceleration.
 
 
 ---
@@ -85,6 +89,8 @@ To change the hyperparameters except boolean ```training```, you must recompile 
 
 ```plaintext
 NeuralNetwork/
+│
+├── CUDA VERSION/       # The MLP version exploiting CUDA features (x2-x4 computation time gain). No interface.
 │
 ├── executable/
 │   ├── database/       # Dataset
